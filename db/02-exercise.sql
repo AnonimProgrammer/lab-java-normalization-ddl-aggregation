@@ -1,16 +1,16 @@
-CREATE TABLE customers (
+CREATE TABLE IF NOT EXISTS customers (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL UNIQUE,
     status VARCHAR(50) NOT NULL
 );
 
-CREATE TABLE aircrafts (
+CREATE TABLE IF NOT EXISTS aircrafts (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL UNIQUE,
     total_seats INT NOT NULL CHECK (total_seats > 0)
 );
 
-CREATE TABLE flights (
+CREATE TABLE IF NOT EXISTS flights (
     id INT AUTO_INCREMENT PRIMARY KEY,
     number VARCHAR(20) NOT NULL UNIQUE,
     mileage INT NOT NULL CHECK (mileage >= 0),
@@ -24,7 +24,7 @@ CREATE TABLE flights (
         ON DELETE RESTRICT
 );
 
-CREATE TABLE bookings (
+CREATE TABLE IF NOT EXISTS bookings (
     customer_id INT NOT NULL,
     flight_id INT NOT NULL,
     PRIMARY KEY (customer_id, flight_id),
